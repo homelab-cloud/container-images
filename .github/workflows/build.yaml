@@ -45,7 +45,7 @@ jobs:
           echo "dir_name=$(dirname ${{ matrix.image }})" >> $GITHUB_OUTPUT
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{github.actor}}
@@ -59,4 +59,3 @@ jobs:
           tags: ghcr.io/${{ github.repository }}/${{ steps.vars.outputs.image_name }}:latest
           file: ${{ matrix.image }}
           no-cache: true
-          progress: plain
